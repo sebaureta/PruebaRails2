@@ -1,0 +1,7 @@
+<h1> Tarea: <%= @todo.details %> </h1>
+<% if @todo.completed == true %>
+<p> Tarea Completa <span class="glyphicon glyphicon-ok"></span></p>
+<% else %>
+<p> Tarea Incompleta <span class="glyphicon glyphicon-remove"></span>
+<% end %>
+<p> Creado Hace: <%= time_ago_in_words @todo.created_at %> </p>

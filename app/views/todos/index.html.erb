@@ -1,0 +1,24 @@
+
+<h1>Bienvenido a tu lista de Tareas Diciocheras</h1>
+
+<p> <%= link_to 'Crear Tarea', new_todo_path, class: 'btn btn-primary'%> </p>
+<div class="row center">
+  <% @todos.each do |todo| %>
+  <div class="col-sm-4 col-md-4">
+    <div class="thumbnail">
+      <a><%= link_to(image_for(todo, size: 300)) %></a>
+      <div class="caption">
+        <h3> <%= todo.details %> </h3>
+        <p><%= link_to 'Detalles', todo_path(todo.id), class: 'btn btn-info'%></p>
+        <% if user_signed_in? %>
+          <% if todo.completed == true %>
+            <p> <%= link_to 'No Completar', nocomplete_path(todo), class: 'btn btn-danger' %></p>
+          <% else %>
+            <p> <%= link_to 'Completar', complete_path(todo), class: 'btn btn-success' %> </p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
